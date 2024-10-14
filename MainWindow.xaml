@@ -1,0 +1,364 @@
+﻿<Window x:Class="Tool_Reg_OKX.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tool_Reg_OKX"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Reg Okx V1.5" Height="850" Width="1100" Foreground="White" >
+    <Grid Background="#FF16121F" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="190"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel x:Name="Header" Grid.Row="0" 
+                    
+      VerticalAlignment="Center" Orientation="Horizontal" 
+      Margin="20,0,0,0" >
+            <Button 
+  Content="Start"
+  Command="{Binding StartCommand}"
+   Background="Green"
+                Height="45"
+                Width="70"
+    Foreground="White"
+  ToolTip="Bắt đầu chạy"
+  Margin="0,0,20,0">
+            </Button>
+
+            <Button
+  Content="Stop"
+  Command="{Binding StopCommand}"
+ Background="Red"
+  Foreground="White"
+                Height="45"
+Width="70"
+  ToolTip="Tắt chương trình"
+  Margin="0,0,20,0">
+            </Button>
+   
+            <StackPanel Margin="20,0,0,0" >
+
+                <Label Content="Thread:" FontSize="16"></Label>
+                <materialDesign:NumericUpDown 
+                Value="{Binding Thread}"
+                    Width="100"
+                    Height="40"
+                Background="WhiteSmoke"
+                Foreground="Black"
+                Margin="0,0,0,0">
+                    <materialDesign:NumericUpDown.IncreaseContent>
+                        <Border
+      BorderBrush="{DynamicResource MaterialDesign.Brush.Foreground}"
+      BorderThickness="1"
+      CornerRadius="20"
+     >
+                            <materialDesign:PackIcon
+        Kind="ArrowUp" />
+                        </Border>
+                    </materialDesign:NumericUpDown.IncreaseContent>
+                    <materialDesign:NumericUpDown.DecreaseContent>
+                        <Border
+                          BorderBrush="{DynamicResource MaterialDesign.Brush.Foreground}"
+                          BorderThickness="1"
+                          CornerRadius="20">
+                            <materialDesign:PackIcon
+                                Kind="ArrowDown" />
+                        </Border>
+                    </materialDesign:NumericUpDown.DecreaseContent>
+                </materialDesign:NumericUpDown>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Running:" FontSize="16"></Label>
+                    <Label Content="{Binding ThreadRunning,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="16"></Label>
+                </StackPanel>
+
+
+
+
+
+
+            </StackPanel>
+
+            <StackPanel Margin="60,0,0,0">
+                <Label Content="Scale:" FontSize="16"></Label>
+
+                <TextBox
+    Height="40"
+                    HorizontalContentAlignment="Center"
+    Background="WhiteSmoke"
+Foreground="Black"
+Width="80"
+    Text="{Binding Scale, UpdateSourceTrigger=PropertyChanged, StringFormat=N1}"
+FontSize="18"
+            FontFamily="Bold"
+Margin="0,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="Referral Code:" FontSize="16" Margin="40,0,0,0"></Label>
+                <Button   Margin="23,-20,0,0"
+      Command="{Binding OpenReferraltCommand}"
+      Width="150"
+      Background="Transparent"
+                          Padding="0"
+      Height="80" 
+      BorderThickness="0">
+                    <materialDesign:PackIcon Height="70" Width="200"
+                           Background="Transparent"
+                           ToolTip="Referral Code" 
+                           Kind="FolderAccount" 
+                           Foreground="WhiteSmoke" 
+                           HorizontalAlignment="Right" 
+                           VerticalAlignment="Center"/>
+                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Count:" FontSize="16" Margin="40,-20,0,0"></Label>
+                    <Label Content="{Binding ReferralCount}" FontSize="16" Margin="0,-20,0,0"></Label>
+                </StackPanel>
+            </StackPanel>
+     
+        
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1"  Orientation="Horizontal" Margin="0,20,0,0">
+            <StackPanel>
+                <Label Content="Output:" FontSize="16" Margin="20,0,0,0"></Label>
+                <Button   Margin="5,-30,0,0"
+              Command="{Binding OpenOutputCommand}"
+              Width="150"
+              Background="Transparent" 
+              Height="200" 
+              BorderThickness="0">
+                    <materialDesign:PackIcon Height="200" Width="150"
+                                   Background="Transparent"
+                                   ToolTip="Output" 
+                                   Kind="FolderAccount" 
+                                   Foreground="WhiteSmoke" 
+                                   HorizontalAlignment="Right" 
+                                   VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="ApiKey ViOTP:" FontSize="16"></Label>
+                <TextBox
+            Height="40"
+            Background="WhiteSmoke"
+        Foreground="Black"
+        Width="190"
+        Text="{Binding ApiKeyViOTP,UpdateSourceTrigger=PropertyChanged}"
+        FontSize="18"
+                    FontFamily="Bold"
+        Margin="0,0,0,0"/>
+
+                <Label Content="Api Url GPM:" FontSize="16" Margin="0,10,0,0"></Label>
+                <TextBox
+    Height="40"
+    Background="WhiteSmoke"
+Foreground="Black"
+Width="190"
+Text="{Binding ApiUrlGPM,UpdateSourceTrigger=PropertyChanged}"
+FontSize="18"
+            FontFamily="Bold"
+Margin="0,0,0,0"/>
+                
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel>
+                 
+                    <StackPanel Margin="20,0,0,0">
+                        <Label Content="ApiKey CapMonster:" FontSize="16"></Label>
+                        <TextBox
+            Height="40"
+            Background="WhiteSmoke"
+        Foreground="Black"
+        Width="190"
+        Text="{Binding ApiKeyCapMonster,UpdateSourceTrigger=PropertyChanged}"
+        FontSize="18"
+                    FontFamily="Bold"
+        Margin="-70,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel x:Name="ComboboxGroup" Margin="20,5,0,0">
+                        <Label Content="Chọn group:" FontSize="16" Margin="0,0,0,0"></Label>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox 
+                        Padding="5"
+                            VerticalAlignment="Center"
+            Grid.Row="0"
+            Width="200"
+            FontSize="14"
+            Background="#373742"
+            Foreground="White"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            ItemsSource="{Binding Groups}"
+            SelectedValuePath="GroupID"
+            SelectedValue="{Binding SelectedGroupID, Mode=TwoWay}">
+
+                                <!-- Style cho ComboBoxItem -->
+                                <ComboBox.ItemContainerStyle>
+                                    <Style TargetType="ComboBoxItem">
+                                        <Setter Property="Background" Value="#373742" />
+                                        <!-- Đặt màu nền mặc định của mục -->
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Padding" Value="0" />
+                                        <!-- Loại bỏ Padding -->
+                                        <Setter Property="Margin" Value="0" />
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock 
+                        Margin="0" 
+                        Padding="10" 
+                        Text="{Binding GroupName}" 
+                        Background="#373742" 
+                        Foreground="White" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Border CornerRadius="30" Margin="10,0,0,0" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button  
+Command="{Binding ReloadGroupCommand}"
+CommandParameter="{Binding SelectedFolderIdKey}"
+Background="Transparent" Height="40" BorderThickness="0">
+                                    <materialDesign:PackIcon Height="40" Width="40" ToolTip="Reload" Kind="Reload" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </StackPanel>
+           
+                
+                
+                
+                <StackPanel Margin="20,0,0,0">
+                    <Label Content="ApiKey WWProxy:" FontSize="16" />
+
+                    <TextBox
+                 Background="WhiteSmoke"
+                Foreground="Black"
+Height="150"
+                Text="{Binding ApiKeyWWProxy,UpdateSourceTrigger=PropertyChanged}"
+                Width="380"
+VerticalAlignment="Top"
+AcceptsReturn="True"
+Style="{StaticResource MaterialDesignOutlinedTextBox}"
+
+                FontSize="16"
+VerticalScrollBarVisibility="Auto"/>
+
+                </StackPanel>
+            </StackPanel>
+          
+
+        </WrapPanel>
+
+        <Grid Grid.Row="2" Margin="20,40,20,20">
+            <DataGrid
+         x:Name="myDataGrid"
+        FontSize="16"
+        AutoGenerateColumns="False"
+        CanUserAddRows="False"
+        HeadersVisibility="All"
+        CanUserSortColumns="True"
+        ItemsSource="{Binding Accounts}"
+        Background="Transparent"
+        BorderThickness="0"
+        BorderBrush="Transparent"
+        RowHeight="45"
+        SelectionUnit="FullRow"
+        SelectionMode="Extended"
+        RowHeaderWidth="0"
+               Width="auto"
+        VerticalScrollBarVisibility="Auto"
+        HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                  Header="Email"
+           MinWidth="180"
+                        MaxWidth="200"
+             IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+                Path="Email">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn
+                        MaxWidth="180"
+              Header="PassWord"
+             IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+                                
+            Path="PassWord">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+             Header="Status"
+                           
+            IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+           Path="Status">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+             Header="2FA"
+                          MaxWidth="180"
+            IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+           Path="C_2Fa">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+            MaxWidth="120"
+  Header="ReferralCode"
+ IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+                    
+Path="ReferralCode">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn
+             Header="LinkVery"
+                          MinWidth="180"
+            IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <Binding
+           Path="LinkVery">
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <WrapPanel Grid.Row="3" Margin="20,0,20,0" VerticalAlignment="Center">
+            <TextBlock Text="Thành Công:" FontSize="18" Foreground="Green"></TextBlock>
+            <Rectangle Width="5"></Rectangle>
+            <TextBlock Text="{Binding Success}" FontSize="18" Foreground="Green"></TextBlock>
+            <Rectangle Width="20"></Rectangle>
+            <TextBlock Text="Thất Bại:" FontSize="18" Foreground="Red"></TextBlock>
+            <Rectangle Width="5"></Rectangle>
+            <TextBlock Text="{Binding Fail}" FontSize="18" Foreground="Red"></TextBlock>
+        </WrapPanel>
+    </Grid>
+</Window>
